@@ -25,10 +25,8 @@ To set up the project locally, follow these steps:
    ```bash
    git clone <repository-url>
    cd express-server-app
-  ```
-
+   ```
 2. Install dependencies:
-
 
   ```bash
    npm install
