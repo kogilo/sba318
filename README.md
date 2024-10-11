@@ -26,16 +26,22 @@ To set up the project locally, follow these steps:
    git clone <repository-url>
    cd express-server-app
   ```
+
 2. Install dependencies:
+
 
   ```bash
    npm install
  ```
+
 3. Create a .env file (if using environment variables):
+
 ```plaintext
 PORT = 3000
 ```
+
 4. Start the server:
+
 ```bash
 npm start
 
@@ -73,3 +79,10 @@ express-server-app/
 ## Acknowledgments
 Thanks to the instructor, Mr Dylan Comeau and peers for their guidance and support during the development of this project.
 Resources used for this project include [Pexels](https://www.lipsum.com/) for images, [Lorem Ipsum](https://www.lipsum.com/) for placeholder text and [GIFs](https://www.motionelements.com/search/gif) for GIFs (and other media)..
+
+- Project url:
+
+```csharp
+https://github.com/kogilo/sba318
+
+```
