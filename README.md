@@ -27,9 +27,9 @@ To set up the project locally, follow these steps:
    cd express-server-app
   ```
 2. Install dependencies:
-```bash
-npm install
-```
+  ```bash
+   npm install
+ ```
 3. Create a .env file (if using environment variables):
 ```plaintext
 PORT = 3000
