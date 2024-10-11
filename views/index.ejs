@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1><%= header %></h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/users">Users</a></li>
+                <li><a href="/posts">Posts</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Create a New Post</h2>
+            <form action="/posts" method="POST">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" rows="4" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Available Posts</h2>
+            <ul id="post-list">
+                <% posts.forEach(post => { %>
+                    <li><strong><%= post.title %></strong>: <%= post.content %></li>
+                <% }); %>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024Express Server Application</p>
+    </footer>
+</body>
+</html>
