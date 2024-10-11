@@ -25,10 +25,8 @@ To set up the project locally, follow these steps:
    ```bash
    git clone <repository-url>
    cd express-server-app
-  ```
-
+   ```
 2. Install dependencies:
-
 
   ```bash
    npm install
@@ -86,5 +84,8 @@ Resources used for this project include [Pexels](https://www.lipsum.com/) for im
 https://github.com/kogilo/sba318
 
 ```
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0a44ce57a847dcd303c1f91ed9831b67deb5c3f4
