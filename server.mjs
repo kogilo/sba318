@@ -1,23 +1,30 @@
 
-// import { readFileSync } from 'fs'; // for data reading
-// import express from 'express';
-
-// import { readFileSync } from 'fs';
 import fs, {readFileSync, readFile, writeFile } from 'fs';
-
 import path from 'path';
 import url from 'url'
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
- 
- 
-
-
 import express from 'express';
-
+import morgan from 'morgan';// 3rd party middleware
 const app = express();
 const port = 3000;
-app.use(express.json()); // middleware
+
+// 1. MIDDLEWARES
+app.use(morgan('dev'))
+app.use(express.json()); 
+// Create our own middleware
+app.use((req, res, next) => {
+  console.log('Hello from the middleware 👍');
+  next();
+})
+app.use((req, res, next) =>{
+  req.requestTime = new Date().toISOString();
+  next();
+})
+
+
+// 2. ROUTES HANDLERS
+
 const posts = JSON.parse(readFileSync(`${__dirname}/data/posts.mjs`));
 
 const deletePost = (req, res) => {
@@ -51,8 +58,10 @@ res.status(200).json({
 }
 
 const getAllPosts = (req, res) =>{
+  console.log(req.requestTime);
   res.status(200).json({
       status: 'success',
+      requestedAt: req.requestTime,
       result: posts.length,
       data: {
         posts
@@ -107,6 +116,11 @@ const CreatePost = (req, res) =>{
 // app.patch('/api/v1/posts/:id', updatePost)
 // app.delete('/api/v1/posts/:id', deletePost)
 
+
+
+
+// 3. ROUTES
+
 app
 .route('/api/v1/posts')
 .get(getAllPosts)
@@ -119,11 +133,7 @@ app
 .delete(deletePost)
 
 
-
-
-
-
-
+// 4. START SERVER
 
 app.listen(port, () => {
     console.log(`App running on port ${port}...`);
