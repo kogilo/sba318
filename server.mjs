@@ -1,50 +1,37 @@
-// Initialize the Project
-    // npm init -y 
-    // npm install express
-// Setup Git
-
-// Imports
+// import { readFileSync } from 'fs'; // for data reading
+// import express from 'express';
+import path from 'path';
+import url from 'url'
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+ 
+ 
+import { readFileSync } from 'fs';
 import express from 'express';
 
-// Create the Express Server /  an instance of express
-
 const app = express();
-let PORT = 3000;
+const port = 3000;
+
+// app.get('/', (req, res) => {
+//     res.status(200).json({message: 'Hello from server side...', app: 'natour',node: 'JS env'}
+//                         );})
+// app.post('/', (req, res) =>{
+//     res.send(`You can post to this endpoint...`);
+// })
+const posts = JSON.parse(readFileSync(`${__dirname}/data/posts.mjs`));
+app.get('/api/v1/comments', (req, res) =>{
+    res.status(200).json({
+        status: 'success',
+        result: posts.length,
+        data: {
+          posts
+        }
+    })
+})
 
 
 
-// const express = require('express');
-// const app = express();
-// const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.send(`Server is running on port ${PORT}`);
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
-});
-
-
-// Create and Use Middleware
-
-const logRequest = (req, res, next) => {
-    console.log(`${req.method} request for ${req.url}`);
-    next();
-  };
-  
-  const checkAuth = (req, res, next) => {
-    if (req.query.apiKey === '12345') {
-      next();
-    } else {
-      res.status(401).send('Unauthorized');
-    }
-  };
-  
-  app.use(logRequest);
-
-  
-  // Create RESTful API Endpoints
-  
+app.listen(port, () => {
+    console.log(`App running on port ${port}...`);
+})
