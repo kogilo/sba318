@@ -1,4 +1,6 @@
-[
+[ {
+    "type": "module"
+},
     {
         "id": 1,
         "title": "Introduction to Node.js",
@@ -35,4 +37,5 @@
             3
         ]
     }
+
 ]

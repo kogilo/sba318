@@ -1,4 +1,6 @@
-[
+[ {
+  "type": "module"
+},
     {
       "id": 1,
       "postId": 1,
