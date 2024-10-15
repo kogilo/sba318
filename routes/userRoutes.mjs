@@ -1,66 +1,29 @@
+import path from 'path';
+import url from 'url'
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 import express from "express"
 // import router from "router"
 // const router = express.Router()
 
 // const router = express.Router()
 
-
-const getAllUsers = (req, res) => {
-    res.status(500).json({
-      satus: 'error',
-      message: 'This route is not yet defined'
-    })
-  }
-  
-  
-  const getUser = (req, res) => {
-    res.status(500).json({
-      satus: 'error',
-      message: 'This route is not yet defined'
-    })
-  }
-  
-  
-  
-  const createUser = (req, res) => {
-    res.status(500).json({
-      satus: 'error',
-      message: 'This route is not yet defined'
-    })
-  }
-  
-  
-  
-  const updateUser = (req, res) => {
-    res.status(500).json({
-      satus: 'error',
-      message: 'This route is not yet defined'
-    })
-  }
-  
-  const deleteUser = (req, res) => {
-    res.status(500).json({
-      satus: 'error',
-      message: 'This route is not yet defined'
-    })
-  }
-
-
-  
+import userControllers from "./../controllers/userControllers.mjs";
   
   const router = express.Router();  
 
   
 router
 .route('/')
-.get(getAllUsers)
-.post(createUser)
+.get(userControllers.getAllUsers)
+.post(userControllers.createUser)
 
 router
 .route('/:id')
-.get(getUser)
-.patch(updateUser)
-.delete(deleteUser)
+.get(userControllers.getUser)
+.patch(userControllers.updateUser)
+.delete(userControllers.deleteUser)
 
 
 export default router;
